@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model agency {
+  id String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name    String
+  address String
+  picture String
+  twitter String
+}
+
+model employeedata {
+  id       String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name          String
+  lastname      String
+  age           Int
+  address       String
+  job           String
+  education     String
+  experience    String
+  specialskills String
+  sss           String
+  pagibig       String
+  tin           String
+  philhealh     String
+  picture       String
+  twitter       String
+}
+
+model navbarcontent {
+  id String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name    String
+  url     String
+}
+
+model navbardata {
+  id  String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  dataname String
+  style    String
+}
+
+enum author {
+  ADMIN
+  AGENCY
+  APPLICANT
+}
